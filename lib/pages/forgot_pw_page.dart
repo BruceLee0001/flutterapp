@@ -21,13 +21,13 @@ class _ForogtPasswordPageState extends State<ForogtPasswordPage> {
     try {
       await FirebaseAuth.instance
           .sendPasswordResetEmail(email: _emailController.text.trim());
-      showDialog(
-          context: context,
-          builder: (context) {
-            return AlertDialog(
-              content: Text('A password reset link has been sent.'),
-            );
-          });
+      // showDialog(
+      //     context: context,
+      //     builder: (context) {
+      //       return const AlertDialog(
+      //         content: Text('A password reset link has been sent.'),
+      //       );
+      //     });
     } on FirebaseAuthException catch (e) {
       showDialog(
           context: context,
