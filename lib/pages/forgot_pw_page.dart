@@ -21,13 +21,13 @@ class _ForogtPasswordPageState extends State<ForogtPasswordPage> {
     try {
       await FirebaseAuth.instance
           .sendPasswordResetEmail(email: _emailController.text.trim());
-      // showDialog(
-      //     context: context,
-      //     builder: (context) {
-      //       return const AlertDialog(
-      //         content: Text('A password reset link has been sent.'),
-      //       );
-      //     });
+      showDialog(
+          context: context,
+          builder: (context) {
+            return const AlertDialog(
+              content: Text('A password reset link has been sent.'),
+            );
+          });
     } on FirebaseAuthException catch (e) {
       showDialog(
           context: context,
@@ -49,8 +49,8 @@ class _ForogtPasswordPageState extends State<ForogtPasswordPage> {
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 25.0),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 25.0),
               child: Text(
                 'Enter your email and we will send you a password reset link.',
                 textAlign: TextAlign.center,
@@ -58,7 +58,7 @@ class _ForogtPasswordPageState extends State<ForogtPasswordPage> {
               ),
             ),
 
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
 
@@ -69,11 +69,11 @@ class _ForogtPasswordPageState extends State<ForogtPasswordPage> {
                 controller: _emailController,
                 decoration: InputDecoration(
                   enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.white),
+                    borderSide: const BorderSide(color: Colors.white),
                     borderRadius: BorderRadius.circular(12),
                   ),
                   focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.deepPurple),
+                    borderSide: const BorderSide(color: Colors.deepPurple),
                     borderRadius: BorderRadius.circular(12),
                   ),
                   hintText: 'Email',
@@ -82,13 +82,13 @@ class _ForogtPasswordPageState extends State<ForogtPasswordPage> {
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             MaterialButton(
               onPressed: passwordReset,
-              child: Text('Reset Password'),
               color: Colors.deepPurple[200],
+              child: const Text('Reset Password'),
             )
           ],
         ));

@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterapp/pages/forgot_pw_page.dart';
+import 'package:flutterapp/components/login_button.dart';
 
 class LoginPage extends StatefulWidget {
   final VoidCallback showRegisterPage;
@@ -20,7 +21,7 @@ class _LoginPageState extends State<LoginPage> {
     showDialog(
         context: context,
         builder: (context) {
-          return Center(child: CircularProgressIndicator());
+          return const Center(child: CircularProgressIndicator());
         });
 
     await FirebaseAuth.instance.signInWithEmailAndPassword(
@@ -28,7 +29,7 @@ class _LoginPageState extends State<LoginPage> {
         password: _passwordController.text.trim());
 
     //Remove Loading Screen
-    Navigator.of(context).pop();
+    if (context.mounted) Navigator.of(context).pop();
   }
 
   @override
@@ -47,12 +48,12 @@ class _LoginPageState extends State<LoginPage> {
           child: SingleChildScrollView(
             child:
                 Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-              Icon(
+              const Icon(
                 Icons.android,
                 size: 100,
               ),
               const Text(
-                'Hello Again!!',
+                'Hello again!!',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 36,
@@ -78,11 +79,11 @@ class _LoginPageState extends State<LoginPage> {
                   controller: _emailController,
                   decoration: InputDecoration(
                     enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.white),
+                      borderSide: const BorderSide(color: Colors.white),
                       borderRadius: BorderRadius.circular(12),
                     ),
                     focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.deepPurple),
+                      borderSide: const BorderSide(color: Colors.deepPurple),
                       borderRadius: BorderRadius.circular(12),
                     ),
                     hintText: 'Email',
@@ -102,11 +103,11 @@ class _LoginPageState extends State<LoginPage> {
                   controller: _passwordController,
                   decoration: InputDecoration(
                     enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.white),
+                      borderSide: const BorderSide(color: Colors.white),
                       borderRadius: BorderRadius.circular(12),
                     ),
                     focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.deepPurple),
+                      borderSide: const BorderSide(color: Colors.deepPurple),
                       borderRadius: BorderRadius.circular(12),
                     ),
                     hintText: 'Password',
@@ -131,12 +132,12 @@ class _LoginPageState extends State<LoginPage> {
                           context,
                           MaterialPageRoute(
                             builder: (context) {
-                              return ForogtPasswordPage();
+                              return const ForogtPasswordPage();
                             },
                           ),
                         );
                       },
-                      child: Text(
+                      child: const Text(
                         'Forgot Password?',
                         style: TextStyle(
                             color: Colors.blue, fontWeight: FontWeight.bold),
@@ -151,6 +152,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
 
               //Sign in Button
+
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 25.0),
                 child: GestureDetector(
@@ -163,7 +165,7 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                     child: const Center(
                         child: Text(
-                      'Sign In',
+                      'Log In',
                       style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.bold,

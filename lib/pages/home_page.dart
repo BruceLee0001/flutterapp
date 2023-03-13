@@ -12,26 +12,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   final user = FirebaseAuth.instance.currentUser!;
 
-//document id
-  List<String> docIDs = [];
-
-//get docIDs
-  Future getDocId() async {
-    await FirebaseFirestore.instance
-        .collection('user')
-        .get()
-        .then((snapshot) => snapshot.docs.forEach((document) {
-              print(document.reference);
-              docIDs.add(document.reference.id);
-            }));
-  }
-
   @override
-  void initState() {
-    getDocId();
-    super.initState();
-  }
-
   Widget build(BuildContext context) {
     final user = FirebaseAuth.instance.currentUser!;
 
@@ -40,17 +21,17 @@ class _HomePageState extends State<HomePage> {
           child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text('Signed In as: ' + user.email!),
+          Text('Signed In as: ${user.email!}'),
           MaterialButton(
             onPressed: () {
               FirebaseAuth.instance.signOut();
             },
             color: Colors.deepPurple[200],
-            child: Text('Sign Out'),
+            child: const Text('Sign Out'),
           ),
           Expanded(
             child: ListView.builder(itemBuilder: (context, index) {
-              return ListTile();
+              return const ListTile();
             }),
           )
         ],

@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutterapp/auth/auth_page.dart';
+// import 'package:flutterapp/auth/auth_page.dart';
 
 class RegisterPage extends StatefulWidget {
   final VoidCallback showLoginPage;
@@ -37,7 +37,7 @@ class _RegisterPageState extends State<RegisterPage> {
     showDialog(
         context: context,
         builder: (context) {
-          return Center(child: CircularProgressIndicator());
+          return const Center(child: CircularProgressIndicator());
         });
 
     //password confirm
@@ -89,12 +89,12 @@ class _RegisterPageState extends State<RegisterPage> {
           child: SingleChildScrollView(
             child:
                 Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-              Icon(
+              const Icon(
                 Icons.android,
                 size: 100,
               ),
               const Text(
-                'Hello There',
+                'Hello there!',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 36,
@@ -120,11 +120,11 @@ class _RegisterPageState extends State<RegisterPage> {
                   controller: _firstNameController,
                   decoration: InputDecoration(
                     enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.white),
+                      borderSide: const BorderSide(color: Colors.white),
                       borderRadius: BorderRadius.circular(12),
                     ),
                     focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.deepPurple),
+                      borderSide: const BorderSide(color: Colors.deepPurple),
                       borderRadius: BorderRadius.circular(12),
                     ),
                     hintText: 'First Name',
@@ -142,11 +142,11 @@ class _RegisterPageState extends State<RegisterPage> {
                   controller: _lastNameController,
                   decoration: InputDecoration(
                     enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.white),
+                      borderSide: const BorderSide(color: Colors.white),
                       borderRadius: BorderRadius.circular(12),
                     ),
                     focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.deepPurple),
+                      borderSide: const BorderSide(color: Colors.deepPurple),
                       borderRadius: BorderRadius.circular(12),
                     ),
                     hintText: 'Last Name',
@@ -165,11 +165,11 @@ class _RegisterPageState extends State<RegisterPage> {
                   controller: _ageController,
                   decoration: InputDecoration(
                     enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.white),
+                      borderSide: const BorderSide(color: Colors.white),
                       borderRadius: BorderRadius.circular(12),
                     ),
                     focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.deepPurple),
+                      borderSide: const BorderSide(color: Colors.deepPurple),
                       borderRadius: BorderRadius.circular(12),
                     ),
                     hintText: 'Your Age',
@@ -188,11 +188,11 @@ class _RegisterPageState extends State<RegisterPage> {
                   controller: _emailController,
                   decoration: InputDecoration(
                     enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.white),
+                      borderSide: const BorderSide(color: Colors.white),
                       borderRadius: BorderRadius.circular(12),
                     ),
                     focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.deepPurple),
+                      borderSide: const BorderSide(color: Colors.deepPurple),
                       borderRadius: BorderRadius.circular(12),
                     ),
                     hintText: 'Email',
@@ -212,11 +212,11 @@ class _RegisterPageState extends State<RegisterPage> {
                   controller: _passwordController,
                   decoration: InputDecoration(
                     enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.white),
+                      borderSide: const BorderSide(color: Colors.white),
                       borderRadius: BorderRadius.circular(12),
                     ),
                     focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.deepPurple),
+                      borderSide: const BorderSide(color: Colors.deepPurple),
                       borderRadius: BorderRadius.circular(12),
                     ),
                     hintText: 'Password',
@@ -237,11 +237,11 @@ class _RegisterPageState extends State<RegisterPage> {
                   controller: _confirmPasswordController,
                   decoration: InputDecoration(
                     enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.white),
+                      borderSide: const BorderSide(color: Colors.white),
                       borderRadius: BorderRadius.circular(12),
                     ),
                     focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.deepPurple),
+                      borderSide: const BorderSide(color: Colors.deepPurple),
                       borderRadius: BorderRadius.circular(12),
                     ),
                     hintText: 'Password',
@@ -294,7 +294,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   GestureDetector(
                     onTap: widget.showLoginPage,
                     child: const Text(
-                      ' Sign In',
+                      ' Log In',
                       style: TextStyle(
                           color: Colors.blue, fontWeight: FontWeight.bold),
                     ),
