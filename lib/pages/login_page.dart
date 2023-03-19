@@ -55,7 +55,6 @@ class _LoginPageState extends State<LoginPage> {
       }
       if (e.code == 'user-not-found') {
         wrongEmailMessage();
-        print('Hello');
       } else if (e.code == 'wrong-passwoed') {
         wrongPasswordMessage();
       }
