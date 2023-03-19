@@ -244,7 +244,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       borderSide: const BorderSide(color: Colors.deepPurple),
                       borderRadius: BorderRadius.circular(12),
                     ),
-                    hintText: 'Password',
+                    hintText: 'Confirm Password',
                     fillColor: Colors.grey[200],
                     filled: true,
                   ),

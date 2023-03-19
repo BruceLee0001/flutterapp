@@ -1,7 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterapp/pages/forgot_pw_page.dart';
+// ignore: unused_import
 import 'package:flutterapp/components/login_button.dart';
+
+import '../components/square_title.dart';
 
 class LoginPage extends StatefulWidget {
   final VoidCallback showRegisterPage;
@@ -17,17 +20,48 @@ class _LoginPageState extends State<LoginPage> {
   final _passwordController = TextEditingController();
 
   Future signIn() async {
-    //Skow loading screen
+    
+    //Show loading screen
     showDialog(
         context: context,
         builder: (context) {
           return const Center(child: CircularProgressIndicator());
         });
+    // wrongEmailMessage
+    void wrongEmailMessage() {
+      showDialog(context: context, builder: (context) {
+        return const AlertDialog(
+          title: Text('Incorrect Email'),
+        );
+      },);
+    }
+    // wrongEmailMessage
+    void wrongPasswordMessage() {
+      showDialog(context: context, builder: (context) {
+        return const AlertDialog(
+          title: Text('Incorrect Email'),
+        );
+      },);
+    }
 
-    await FirebaseAuth.instance.signInWithEmailAndPassword(
+    try {
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: _emailController.text.trim(),
         password: _passwordController.text.trim());
+    } on FirebaseAuthException catch (e) {
+          //Remove Loading Screen
+      if (context.mounted) {
+        Navigator.of(context).pop();
+      }
+      if (e.code == 'user-not-found') {
+        wrongEmailMessage();
+        print('Hello');
+      } else if (e.code == 'wrong-passwoed') {
+        wrongPasswordMessage();
+      }
+    }
 
+    
     //Remove Loading Screen
     if (context.mounted) Navigator.of(context).pop();
   }
@@ -179,6 +213,51 @@ class _LoginPageState extends State<LoginPage> {
               const SizedBox(
                 height: 25,
               ),
+
+              //or continew button
+              Row(
+                children:  [
+                  Expanded(
+                    child: Divider(
+                        thickness: 0.5,
+                        color: Colors.grey[400],  
+                      ),
+                    ),
+                    const Text("Or continue with"),
+                    Expanded(
+                    child: Divider(
+                        thickness: 0.5,
+                        color: Colors.grey[400], 
+                      ),
+                    ),
+                ],
+              ),
+
+              const SizedBox(
+                height: 25),
+
+
+              
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: const [
+                  // google button 
+                  SqaureTitle(imagepath: 'lib/assets/logos/google.png'),
+
+                  SizedBox(
+                width: 50,
+              ),                     
+
+                  // apple  button
+                   SqaureTitle(imagepath: 'lib/assets/logos/apple.png'),
+
+                  
+                  
+                ],
+              ),
+
+              const SizedBox(
+                height: 50),
 
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
